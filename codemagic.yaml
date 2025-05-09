@@ -1,0 +1,14 @@
+workflows:
+  build_flutter_app:
+    name: Build Flutter App (Android & iOS)
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      xcode: latest
+    scripts:
+      - flutter pub get
+      - flutter build apk --release
+      - flutter build ios --release --no-codesign
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
+      - build/ios/iphoneos/*.app
